@@ -1,0 +1,21 @@
+{
+    "name": "andrij200390/yii2-subscribe",
+    "description": "Subscription extension in yii2",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension","subscribe"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrii Golovko",
+            "email": "andrij200390@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "andrij200390\\subscribe\\": ""
+        }
+    }
+}
