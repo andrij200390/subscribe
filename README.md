@@ -28,4 +28,4 @@ Usage
 Once the extension is installed, simply use it in your code by  :
 
 ```php
-<?= \andrij200390\subscribe\AutoloadExample::widget(); ?>```
+<?= \andrij200390\subscribe\Subscribe::widget(); ?>```
