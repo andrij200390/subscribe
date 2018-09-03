@@ -1,6 +1,6 @@
 yii2-subscribe
 ==============
-Subscription extension in yii2
+Subscription extension in yii2. Send data in google spreadsheet
 
 Installation
 ------------
