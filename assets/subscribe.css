@@ -1,0 +1,32 @@
+/*--- Subscribe ---*/
+.subscribe__wrap{
+    width:100%;
+    height: 40px;
+    background: #e7f923;
+    position: fixed;
+    bottom: 0px;
+}
+.subscribe__header{
+    font-size: 14px;
+    font-weight: bold;
+    display: inline-block;
+    line-height: 40px;
+    float: left;
+    width: 50%;
+    text-align: center;
+    min-width: 280px;
+}
+.subscribe__form{
+    display: inline-block;
+    margin-top: 7px;
+    width: 50%;
+    min-width: 280px;
+    text-align: center;
+}
+.subscribe__email{
+    display: inline-block;
+    float: left;
+}
+.subscribe__send{
+
+}

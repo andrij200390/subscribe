@@ -3,21 +3,27 @@
 namespace andrij200390\subscribe;
 use Yii;
 use yii\base\Widget;
-use yii\helpers\Html;
 use yii\web\Cookie;
+use yii\helpers\Url;
 /**
  * This is just an example.
  */
 class Subscribe extends Widget
 {
+
     public $descWidget = 'Подпишитесь и будь в курсе всех Хип-Хоп новостей!';
+    public $submitWidget = 'Подписаться';
+    public $placeholderWidget = 'введите  Ваш e-mail';
+
     public function run()
     {
+
         $my_subscribe = \Yii::$app->getRequest()->getCookies()->getValue('my_subscribe');
          /**
          * If is cookies - hide form
          */
         if(!$my_subscribe){
+
             $subscribe_cookie = new Cookie([
                 'name' => 'my_subscribe',
                 'value' => '1',
@@ -25,34 +31,57 @@ class Subscribe extends Widget
             ]);
             Yii::$app->getResponse()->getCookies()->add($subscribe_cookie);
 
-            $content = $this->getContent();
+            $content = $this->render('subscribe', ['widget' => $this]);
+            $this->checkPost();
+
         }
         else{
-            $content = '';
-            $content = $this->getContent();
+
+            $content = $this->render('subscribe',['widget' => $this]);
+            $this->checkPost();
+
         }
+
+        $this->registerAsset();
         return $content;
     }
 
-    public function getContent(){
-        echo Html::beginTag('div',['class' => 'subscribe__wrap']);
-        echo Html::beginTag('p',['class' => 'subscribe__header']);
-        echo $this->descWidget;
-        echo Html::endTag('p');
-        echo Html::beginTag('form',['class' => 'subscribe__form', 'name' => 'subscribe__form', 'method' => 'post']);
-        echo Html::tag('input','',[
-            'name'=>'subscribe__email',
-            'type'=>'text',
-            'class'=>'subscribe__email',
-            'placeholder'=>'введите  Ваш e-mail'
-        ]);
-        echo Html::tag('input','',[
-            'name'=>'subscribe__send',
-            'type'=>'button',
-            'class'=>'subscribe__send',
-            'value'=>'Подписаться'
-        ]);
-        echo Html::endTag('form');
-        echo Html::endTag('div');
+
+    public function registerAsset(){
+
+        $this_Url = Url::current();
+        $view = $this->getView();
+        SubscribeAsset::register($view);
+        $view->registerJs(<<<JS
+        jQuery('.subscribe__send').on(function(){
+            var data = $('.subscribe__form').serialize();
+            $.ajax({
+                url: '$this_Url',
+                type: 'POST',
+                data: data,
+                success: function(res){
+                    //console.log(res);
+                    alert('Ok!');
+                },
+                error: function(){
+                    alert('Error!');
+                }
+            });
+            //return false;
+        });
+JS
+                );
+
+        $view->registerCss('
+        ');
+    }
+
+
+    public function checkPost(){
+        $request = Yii::$app->request;
+        $email = $request->post('subscribe__email');
+        if(!empty($email)){
+            //echo $email;
+        }
     }
 }
