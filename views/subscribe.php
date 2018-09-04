@@ -9,8 +9,7 @@ echo Html::beginTag('div',['class' => 'subscribe__wrap']);
     echo Html::beginTag('form',[
         'class' => 'subscribe__form',
         'name' => 'subscribe__form',
-        'method' => 'post',
-        'action' => Url::current()
+        'method' => 'post'
         ]
         );
         echo Html::hiddenInput('_csrf-frontend', yii::$app->request->getCsrfToken());
@@ -21,9 +20,12 @@ echo Html::beginTag('div',['class' => 'subscribe__wrap']);
             'placeholder'=> $widget->placeholderWidget
         ]);
         echo Html::tag('input','',[
-            'type'=>'submit',
+            'type'=>'button',
             'class'=>'subscribe__send',
             'value'=> $widget->submitWidget
         ]);
     echo Html::endTag('form');
+    echo Html::beginTag('div', ['class' => 'subscribe__wrap_btn']);
+        echo Html::tag('span','',['class' => 'subscribe__close']);
+    echo Html::endTag('div');
 echo Html::endTag('div');

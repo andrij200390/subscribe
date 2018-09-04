@@ -16,4 +16,7 @@ class SubscribeAsset extends AssetBundle
     public $css = [
         'assets/subscribe.css',
     ];
+    public $js = [
+      'assets/subscribe.js'
+    ];
 }

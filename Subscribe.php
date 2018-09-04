@@ -1,10 +1,13 @@
 <?php
 
 namespace andrij200390\subscribe;
+use Google\Spreadsheet\ServiceRequestFactory;
 use Yii;
 use yii\base\Widget;
-use yii\web\Cookie;
-use yii\helpers\Url;
+use Google\Spreadsheet\SpreadsheetService;
+
+
+
 /**
  * This is just an example.
  */
@@ -14,6 +17,9 @@ class Subscribe extends Widget
     public $descWidget = 'Подпишитесь и будь в курсе всех Хип-Хоп новостей!';
     public $submitWidget = 'Подписаться';
     public $placeholderWidget = 'введите  Ваш e-mail';
+    public $spreadsheetTitle = 'Subscribe';
+    public $spreadsheetCol = 'email';
+
 
     public function run()
     {
@@ -23,57 +29,20 @@ class Subscribe extends Widget
          * If is cookies - hide form
          */
         if(!$my_subscribe){
-
-            $subscribe_cookie = new Cookie([
-                'name' => 'my_subscribe',
-                'value' => '1',
-                'expire' => time() + 86400 * 3,
-            ]);
-            Yii::$app->getResponse()->getCookies()->add($subscribe_cookie);
-
             $content = $this->render('subscribe', ['widget' => $this]);
             $this->checkPost();
-
         }
         else{
-
-            $content = $this->render('subscribe',['widget' => $this]);
             $this->checkPost();
-
         }
-
         $this->registerAsset();
         return $content;
     }
 
 
     public function registerAsset(){
-
-        $this_Url = Url::current();
         $view = $this->getView();
         SubscribeAsset::register($view);
-        $view->registerJs(<<<JS
-        jQuery('.subscribe__send').on(function(){
-            var data = $('.subscribe__form').serialize();
-            $.ajax({
-                url: '$this_Url',
-                type: 'POST',
-                data: data,
-                success: function(res){
-                    //console.log(res);
-                    alert('Ok!');
-                },
-                error: function(){
-                    alert('Error!');
-                }
-            });
-            //return false;
-        });
-JS
-                );
-
-        $view->registerCss('
-        ');
     }
 
 
@@ -81,7 +50,32 @@ JS
         $request = Yii::$app->request;
         $email = $request->post('subscribe__email');
         if(!empty($email)){
-            //echo $email;
+            /*send in google spreadsheet*/
+            putenv('GOOGLE_APPLICATION_CREDENTIALS=' . __DIR__ . '/client_secret.json');
+            $client = new \Google_Client();
+            $client->useApplicationDefaultCredentials();
+            $client->setApplicationName("Something to do with my representatives");
+            $client->setScopes(['https://www.googleapis.com/auth/drive','https://spreadsheets.google.com/feeds']);
+
+            if ($client->isAccessTokenExpired()) {
+                $client->refreshTokenWithAssertion();
+            }
+
+            $accessToken = $client->fetchAccessTokenWithAssertion()["access_token"];
+            \Google\Spreadsheet\ServiceRequestFactory::setInstance(
+                new \Google\Spreadsheet\DefaultServiceRequest($accessToken)
+            );
+
+            $spreadsheet = (new SpreadsheetService)
+                ->getSpreadsheetFeed()
+                ->getByTitle($this->spreadsheetTitle);
+            $worksheets = $spreadsheet->getWorksheetFeed()->getEntries();
+            $worksheet = $worksheets[0];
+            $listFeed = $worksheet->getListFeed();
+            $listFeed->insert([
+                $this->spreadsheetCol =>  $email
+            ]);
+            /*send in google spreadsheet*/
         }
     }
 }
