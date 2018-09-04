@@ -34,6 +34,7 @@ class Subscribe extends Widget
         }
         else{
             $this->checkPost();
+            $content='';
         }
         $this->registerAsset();
         return $content;
