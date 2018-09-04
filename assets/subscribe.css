@@ -71,3 +71,57 @@
 .success{
     border:solid 1px #00a500;
 }
+@media (max-width: 955px){
+    .subscribe__wrap {
+        height: 80px;
+    }
+    .subscribe__header{
+        font-size: 15px;
+        width: 100%;
+        text-align: center;
+        line-height: 35px;
+        margin: 0px;
+    }
+    .subscribe__form{
+        width: 100%;
+        text-align: center;
+    }
+    .subscribe__wrap_btn{
+        position: absolute;
+        right: 30px;
+        top: 45px;
+    }
+}
+
+@media (max-width: 450px) {
+    .subscribe__email{
+        height: 25px;
+    }
+    .subscribe__send{
+        height: 25px;
+    }
+    .subscribe__header{
+        font-size: 13px;
+    }
+    .subscribe__wrap_btn{
+        right: 15px;
+    }
+}
+@media (max-width: 420px) {
+    .subscribe__wrap {
+        height:100px;
+    }
+    .subscribe__header{
+        line-height: 20px;
+    }
+    .subscribe__email{
+        display: block;
+        margin: 5px auto;
+        height: 20px;
+    }
+    .subscribe__send{
+        display: block;
+        margin: 5px auto;
+        height: 20px;
+    }
+}
