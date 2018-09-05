@@ -54,18 +54,7 @@ Once the extension is installed, simply use it in your code by  :
 <?= \andrij200390\subscribe\Subscribe::widget([
         'descWidget' => 'textDescripton',
         'submitWidget' => 'Send',
-        'clientSecret' => '{
-                              "type": "service_account",
-                              "project_id": "YOUR-SPREADSHEET",
-                              "private_key_id": "YOUR_KEY",
-                              "client_email": "YOUR_SERVICE_ACCOUNT",
-                              "client_id": "YOUR_CLIENT_ID",
-                              "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-                              "token_uri": "https://oauth2.googleapis.com/token",
-                              "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-                              "client_x509_cert_url": "*******"
-                            }
-                            '
+        'clientSecret' => '/path/to/file_secret'
     ]); ?>```
 
 
