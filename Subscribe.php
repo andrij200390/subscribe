@@ -19,6 +19,8 @@ class Subscribe extends Widget
     public $placeholderWidget = 'введите  Ваш e-mail';
     public $spreadsheetTitle = 'Subscribe';
     public $spreadsheetCol = 'email';
+    public $clientSecret = '{}';
+
 
 
     public function run()
@@ -48,6 +50,9 @@ class Subscribe extends Widget
 
 
     public function checkPost(){
+        $file = fopen( __DIR__ . '/client_secret.json','w');
+        fwrite($file,$this->clientSecret);
+        fclose($file);
         $request = Yii::$app->request;
         $email = $request->post('subscribe__email');
         if(!empty($email)){

@@ -1,6 +1,6 @@
 {
     "name": "andrij200390/yii2-subscribe",
-    "version": "0.2",
+    "version": "0.3",
     "description": "Subscription extension in yii2. Send data in google spreadsheet",
     "type": "yii2-extension",
     "keywords": ["yii2","extension","subscribe","google", "spreadsheet"],
