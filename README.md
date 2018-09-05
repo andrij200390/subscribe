@@ -32,10 +32,10 @@ Create credentials for a Web Server to access Application Data.
 Name the service account and grant it a Project Role of Editor.
 Download the JSON file.
 
-Copy the contents of the file, and paste it as an option 'clientSecret' for the widget.
+Copy the file to the desired directoryю (example '/frontend/web/assets')
 
 The widget has a list of parameters:
-clientSecret - the contents of the file with Google
+clientSecret - the path to the json file 
 descWidget - Text in the bar
 submitWidget - Button text
 placeholderWidget -Text in the email field

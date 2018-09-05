@@ -19,7 +19,7 @@ class Subscribe extends Widget
     public $placeholderWidget = 'введите  Ваш e-mail';
     public $spreadsheetTitle = 'Subscribe';
     public $spreadsheetCol = 'email';
-    public $clientSecret = '{}';
+    public $clientSecret = '';
 
 
 
@@ -50,14 +50,11 @@ class Subscribe extends Widget
 
 
     public function checkPost(){
-        $file = fopen( __DIR__ . '/client_secret.json','w');
-        fwrite($file,$this->clientSecret);
-        fclose($file);
         $request = Yii::$app->request;
         $email = $request->post('subscribe__email');
         if(!empty($email)){
             /*send in google spreadsheet*/
-            putenv('GOOGLE_APPLICATION_CREDENTIALS=' . __DIR__ . '/client_secret.json');
+            putenv('GOOGLE_APPLICATION_CREDENTIALS=' . $this->clientSecret);
             $client = new \Google_Client();
             $client->useApplicationDefaultCredentials();
             $client->setApplicationName("Something to do with my representatives");
