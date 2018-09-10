@@ -14,7 +14,7 @@ use Google\Spreadsheet\SpreadsheetService;
 class Subscribe extends Widget
 {
 
-    public $descWidget = 'Подпишитесь и будь в курсе всех Хип-Хоп новостей!';
+    public $descWidget = 'Подпишитесь и будьте в курсе всех Хип-Хоп новостей!';
     public $submitWidget = 'Подписаться';
     public $placeholderWidget = 'введите  Ваш e-mail';
     public $spreadsheetTitle = 'Subscribe';

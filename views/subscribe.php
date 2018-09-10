@@ -7,9 +7,9 @@ echo Html::beginTag('div',['class' => 'subscribe__wrap']);
         echo $widget->descWidget;
     echo Html::endTag('p');
     echo Html::beginTag('form',[
-        'class' => 'subscribe__form',
-        'name' => 'subscribe__form',
-        'method' => 'post'
+            'class' => 'subscribe__form',
+            'name' => 'subscribe__form',
+            'method' => 'post',
         ]
         );
         echo Html::hiddenInput('_csrf-frontend', yii::$app->request->getCsrfToken());

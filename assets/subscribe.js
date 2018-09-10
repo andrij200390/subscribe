@@ -35,6 +35,23 @@ function hideWidget() {
 }
 
 jQuery(document).ready(function(){
+    //valid keyup Enter
+    $('.subscribe__form').on('keyup keypress', function(e) {
+        var keyCode = e.keyCode || e.which;
+        if (keyCode === 13) {
+            e.preventDefault();
+            var pattern = /^([a-z0-9_\.-])+@[a-z0-9-]+\.([a-z]{2,4}\.)?[a-z]{2,4}$/i;
+            var email = jQuery('.subscribe__email');
+            if(pattern.test($(email).val())){
+                $(email).removeClass('error');
+                $(email).addClass('success');
+            }
+            else {
+                $(email).addClass('error');
+            }
+            return false;
+        }
+    });
     //validation email
     jQuery('.subscribe__email').blur(function() {
         if($(this).val() != '') {

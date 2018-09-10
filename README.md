@@ -54,10 +54,7 @@ Once the extension is installed, simply use it in your code by  :
 <?= \andrij200390\subscribe\Subscribe::widget([
         'descWidget' => 'textDescripton',
         'submitWidget' => 'Send',
-        'clientSecret' => '/path/to/file_secret',
-        'spreadsheetTitle' => 'title_in_table',
-        'spreadsheetCol' => 'col_in_table'
-
+        'clientSecret' => '/path/to/file_secret'
     ]); ?>```
 
 
