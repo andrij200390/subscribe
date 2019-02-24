@@ -1,58 +1,121 @@
 <?php
 
 namespace andrij200390\subscribe;
-use Google\Spreadsheet\ServiceRequestFactory;
+
 use Yii;
 use yii\base\Widget;
+
 use Google\Spreadsheet\SpreadsheetService;
-
-
+use Google\Spreadsheet\ServiceRequestFactory;
 
 /**
- * This is just an example.
+ * Subscribe is a widget that adds sticked-to-bottom line with custom suggestion/message/link/etc.
+ * User is prompted to subscribe once. After that certain cookie is set to prevent message appearance.
+ * This plugin also relies on Google Spreadsheet dependency for emails storage.
+ *
+ * @author andrij200390 <andrij200390@gmail.com>
+ * @author [SC]Smash3r <scsmash3r@gmail.com>
+ * @since 1.0
  */
 class Subscribe extends Widget
 {
+    /**
+     * Subscription mode
+     * @var string
+     */
+    public $mode;
 
-    public $descWidget = 'Подпишитесь и будьте в курсе всех Хип-Хоп новостей!';
-    public $submitWidget = 'Подписаться';
-    public $placeholderWidget = 'введите  Ваш e-mail';
-    public $spreadsheetTitle = 'Subscribe';
-    public $spreadsheetCol = 'email';
-    public $clientSecret = '';
+    /**
+     * Subscription parameters for email mode
+     * @var array
+     */
+    public $email;
+
+    /**
+     * Subscription parameters for Telegram messenger mode
+     * @var array
+     */
+    public $telegram;
+
+    /**
+     * Settings for thirdparty providers/services, like Google Spreadsheets
+     * @var array
+     */
+    public $provider;
+
+    /**
+     * Settings for controlling cookies
+     * @var array
+     */
+    public $cookie;
 
 
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
 
+        if (!$this->mode) {
+            $this->mode = 'disabled';
+        }
+
+        /* Defaults for email mode */
+        if ($this->mode === 'email') {
+            $this->email['message'] = $this->email['message'] ?? 'Subscribe to keep up with our latest news!';
+            $this->email['submitButtonText'] = $this->email['submitButtonText'] ?? 'Subscribe';
+            $this->email['placeholderText'] = $this->email['placeholderText'] ?? 'Enter your e-mail';
+        }
+
+        /* Defaults for Telegram mode */
+        if ($this->mode === 'telegram') {
+            $this->telegram['message'] = $this->telegram['message'] ?? 'Subscribe to our Telegram channel!';
+            $this->telegram['submitButtonText'] = $this->telegram['submitButtonText'] ?? 'Subscribe';
+            $this->telegram['channelName'] = $this->telegram['channelName'] ?? 'UNNAMED';
+        }
+
+        /* Defaults for provider */
+        if ($this->provider === 'google') {
+            $this->provider['google']['spreadsheet']['title'] = 'Subscribe';
+            $this->provider['google']['spreadsheet']['column'] = 'email';
+            $this->provider['google']['clientSecretJSON'] = '';
+        }
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function run()
     {
+        if ($this->mode == 'disabled') {
+            return;
+        }
 
-        $my_subscribe = \Yii::$app->getRequest()->getCookies()->getValue('my_subscribe');
-         /**
-         * If is cookies - hide form
-         */
-        if(!$my_subscribe){
-            $content = $this->render('subscribe', ['widget' => $this]);
-            $this->checkPost();
+        $cookieCheck = \Yii::$app->getRequest()->getCookies()->getValue('my_subscribe');
+
+        if ($cookieCheck) {
+            return;
         }
-        else{
-            $this->checkPost();
-            $content='';
-        }
-        $this->registerAsset();
-        return $content;
+
+        $this->_checkPost();
+        $this->_registerAsset();
+        return $this->render($this->mode, ['widget' => $this]);
     }
 
 
-    public function registerAsset(){
+    private function _registerAsset()
+    {
         $view = $this->getView();
         SubscribeAsset::register($view);
     }
 
 
-    public function checkPost(){
+    private function _checkPost()
+    {
         $request = Yii::$app->request;
         $email = $request->post('subscribe__email');
-        if(!empty($email)){
+        if (!empty($email)) {
             /*send in google spreadsheet*/
             putenv('GOOGLE_APPLICATION_CREDENTIALS=' . $this->clientSecret);
             $client = new \Google_Client();
