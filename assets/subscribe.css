@@ -54,9 +54,7 @@
 }
 
 a.subscribe__send {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
+    display: block;
     text-decoration: none;
     color: #fff;
 }
