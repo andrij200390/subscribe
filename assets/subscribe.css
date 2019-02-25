@@ -20,7 +20,7 @@
     font-weight: bold;
     display: inline-block;
     line-height: 50px;
-    width: 50%;
+    width: 57%;
     text-align: right;
     margin: 0 20px;
 }
@@ -37,14 +37,14 @@
 
 .subscribe__form {
     display: inline-block;
-    width: 35%;
+    width: 28%;
     text-align: left;
     line-height: 50px;
 }
 
 .subscribe__email {
     height: 35px;
-    width: 200px;
+    width: 40%;
     padding: 0 10px;
     border: none;
     border-radius: 2px;
@@ -134,35 +134,33 @@ a.subscribe__send:hover {
     .subscribe__wrap_btn {
         position: absolute;
         right: 30px;
-        top: 45px;
-    }
-}
-
-@media (max-width: 450px) {
-    .subscribe__email {
-        height: 25px;
+        top: 60%;
     }
 
     .subscribe__send {
-        height: 25px;
+        margin: 0 auto;
     }
 
+    .subscribe__header>svg {
+        width: 25px;
+    }
+}
+
+@media (max-width: 420px) {
     .subscribe__header {
-        font-size: 13px;
+        font-size: 12px;
+    }
+
+    .subscribe__wrap {
+        height: 100px;
     }
 
     .subscribe__wrap_btn {
         right: 15px;
     }
-}
-
-@media (max-width: 420px) {
-    .subscribe__wrap {
-        height: 100px;
-    }
 
     .subscribe__header {
-        line-height: 20px;
+        line-height: 50px;
     }
 
     .subscribe__email {
@@ -173,7 +171,8 @@ a.subscribe__send:hover {
 
     .subscribe__send {
         display: block;
-        margin: 5px auto;
-        height: 20px;
+        height: 35px;
+        line-height: 35px;
+        font-size: 12px;
     }
 }
