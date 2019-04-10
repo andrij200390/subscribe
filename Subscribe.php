@@ -21,7 +21,7 @@ class Subscribe extends Widget
 {
     /**
      * Subscription mode
-     * @var string
+     * @var string|array
      */
     public $mode;
 
@@ -36,6 +36,24 @@ class Subscribe extends Widget
      * @var array
      */
     public $telegram;
+
+    /**
+     * Subscription parameters for Instagram mode
+     * @var array
+     */
+    public $instagram;
+
+    /**
+     * Subscription parameters for VKontakte mode
+     * @var array
+     */
+    public $vk;
+
+    /**
+     * Subscription parameters for all services
+     * @var array
+     */
+    public $all;
 
     /**
      * Settings for thirdparty providers/services, like Google Spreadsheets
@@ -62,17 +80,28 @@ class Subscribe extends Widget
         }
 
         /* Defaults for email mode */
-        if ($this->mode === 'email') {
-            $this->email['message'] = $this->email['message'] ?? 'Subscribe to keep up with our latest news!';
-            $this->email['submitButtonText'] = $this->email['submitButtonText'] ?? 'Subscribe';
-            $this->email['placeholderText'] = $this->email['placeholderText'] ?? 'Enter your e-mail';
-        }
+        $this->email['message'] = $this->email['message'] ?? 'Subscribe to keep up with our latest news!';
+        $this->email['submitButtonText'] = $this->email['submitButtonText'] ?? 'Subscribe';
+        $this->email['placeholderText'] = $this->email['placeholderText'] ?? 'Enter your e-mail';
 
         /* Defaults for Telegram mode */
-        if ($this->mode === 'telegram') {
-            $this->telegram['message'] = $this->telegram['message'] ?? 'Subscribe to our Telegram channel!';
-            $this->telegram['submitButtonText'] = $this->telegram['submitButtonText'] ?? 'Subscribe';
-            $this->telegram['channelName'] = $this->telegram['channelName'] ?? 'UNNAMED';
+        $this->telegram['message'] = $this->telegram['message'] ?? 'Subscribe to our Telegram channel!';
+        $this->telegram['submitButtonText'] = $this->telegram['submitButtonText'] ?? 'Subscribe';
+        $this->telegram['channelName'] = 'https://t.me/'.$this->telegram['channelName'] ?? 'UNNAMED';
+
+        /* Defaults for Instagram mode */
+        $this->instagram['message'] = $this->instagram['message'] ?? 'Subscribe to our Instagram channel!';
+        $this->instagram['submitButtonText'] = $this->instagram['submitButtonText'] ?? 'Subscribe';
+        $this->instagram['channelName'] = 'https://instagram.com/'.$this->instagram['channelName'] ?? 'UNNAMED';
+
+        /* Defaults for VK mode */
+        $this->vk['message'] = $this->vk['message'] ?? 'Subscribe to our VKontakte channel!';
+        $this->vk['submitButtonText'] = $this->vk['submitButtonText'] ?? 'Subscribe';
+        $this->vk['channelName'] = 'https://vk.com/'.$this->vk['channelName'] ?? 'UNNAMED';
+
+        /* Defaults for showing all subscription channels mode */
+        if (is_array($this->mode)) {
+            $this->all['message'] = $this->all['message'] ?? 'Subscribe to our channels: ';
         }
 
         /* Defaults for provider */
@@ -88,8 +117,15 @@ class Subscribe extends Widget
      */
     public function run()
     {
+        /* If you want to temporary hide message bar */
         if ($this->mode == 'disabled') {
             return;
+        }
+
+        $view = $this->mode;
+
+        if (is_array($this->mode)) {
+            $view = 'all';
         }
 
         $cookieCheck = \Yii::$app->getRequest()->getCookies()->getValue('my_subscribe');
@@ -100,7 +136,7 @@ class Subscribe extends Widget
 
         $this->_checkPost();
         $this->_registerAsset();
-        return $this->render($this->mode, ['widget' => $this]);
+        return $this->render($view, ['widget' => $this]);
     }
 
 

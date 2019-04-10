@@ -5,6 +5,7 @@
     bottom: 0px;
     display: none;
     z-index: 999;
+    height: 50px;
 }
 
 .subscribe__wrap--green {
@@ -13,6 +14,17 @@
 
 .subscribe__wrap--blue {
     background: #0088cc;
+}
+
+.subscribe__header>svg {
+    width: 36px;
+    height: 36px;
+    max-height: 36px;
+    max-width: 36px;
+    margin-left: 13px;
+    display: inline-block;
+    float: right;
+    margin-top: 8px;
 }
 
 .subscribe__header {
@@ -29,22 +41,17 @@
     color: #fff;
 }
 
-.subscribe__header>svg {
-    width: 40px;
-    vertical-align: middle;
-    margin-right: 5px;
-}
-
 .subscribe__form {
     display: inline-block;
     width: 35%;
     text-align: left;
     line-height: 50px;
+    margin-bottom: -10px;
 }
 
 .subscribe__email {
     height: 35px;
-    width: 200px;
+    width: 40%;
     padding: 0 10px;
     border: none;
     border-radius: 2px;
@@ -54,9 +61,7 @@
 }
 
 a.subscribe__send {
-    -webkit-appearance: button;
-    -moz-appearance: button;
-    appearance: button;
+    display: block;
     text-decoration: none;
     color: #fff;
 }
@@ -115,6 +120,40 @@ a.subscribe__send:hover {
     border: solid 1px #00a500;
 }
 
+/* --- SUBSCRIPRION ICONS --- */
+.subscribe__icon {
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+    max-height: 32px;
+    max-width: 32px;
+    margin-right: 5px;
+    display: block;
+    float: left;
+    opacity: 0.7;
+}
+
+.subscribe__icon:hover {
+    opacity: 1;
+    -webkit-transition: opacity .1s linear;
+    -moz-transition: opacity .1s linear;
+    -ms-transition: opacity .1s linear;
+    -o-transition: opacity .1s linear;
+    transition: opacity .1s linear;
+}
+
+.subscribe__icon--telegram {
+    background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgMjQwIDI0MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iYiIgeDE9Ii42NjY3IiB4Mj0iLjQxNjciIHkxPSIuMTY2NyIgeTI9Ii43NSI+CjxzdG9wIHN0b3AtY29sb3I9IiMzN2FlZTIiIG9mZnNldD0iMCIvPgo8c3RvcCBzdG9wLWNvbG9yPSIjMWU5NmM4IiBvZmZzZXQ9IjEiLz4KPC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJhIiB4MT0iLjY1OTciIHgyPSIuODUxMiIgeTE9Ii40MzY5IiB5Mj0iLjgwMjQiPgo8c3RvcCBzdG9wLWNvbG9yPSIjZWZmN2ZjIiBvZmZzZXQ9IjAiLz4KPHN0b3Agc3RvcC1jb2xvcj0iI2ZmZiIgb2Zmc2V0PSIxIi8+CjwvbGluZWFyR3JhZGllbnQ+CjwvZGVmcz4KPGNpcmNsZSBjeD0iMTIwIiBjeT0iMTIwIiByPSIxMjAiIGZpbGw9InVybCgjYikiLz4KPHBhdGggZD0ibTk4IDE3NWMtMy44ODc2IDAtMy4yMjctMS40Njc5LTQuNTY3OC01LjE2OTVMODIgMTMyLjIwNTkgMTcwIDgwIiBmaWxsPSIjYzhkYWVhIi8+CjxwYXRoIGQ9Im05OCAxNzVjMyAwIDQuMzI1NS0xLjM3MiA2LTNsMTYtMTUuNTU4LTE5Ljk1OC0xMi4wMzUiIGZpbGw9IiNhOWM5ZGQiLz4KPHBhdGggZD0ibTEwMC4wNCAxNDQuNDEgNDguMzYgMzUuNzI5YzUuNTE4NSAzLjA0NDkgOS41MDE0IDEuNDY4NCAxMC44NzYtNS4xMjM1bDE5LjY4NS05Mi43NjNjMi4wMTU0LTguMDgwMi0zLjA4MDEtMTEuNzQ1LTguMzU5NC05LjM0ODJsLTExNS41OSA0NC41NzFjLTcuODkwMSAzLjE2NDctNy44NDQxIDcuNTY2Ni0xLjQzODIgOS41MjhsMjkuNjYzIDkuMjU4MyA2OC42NzMtNDMuMzI1YzMuMjQxOS0xLjk2NTkgNi4yMTczLTAuOTA4OTkgMy43NzUyIDEuMjU4NCIgZmlsbD0idXJsKCNhKSIvPgo8L3N2Zz4=);
+}
+
+.subscribe__icon--vk {
+    background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDExMi4xOTYgMTEyLjE5NiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTEyLjE5NiAxMTIuMTk2OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8Zz4KCQk8Y2lyY2xlIGlkPSJYTUxJRF8xMV8iIHN0eWxlPSJmaWxsOiM0RDc2QTE7IiBjeD0iNTYuMDk4IiBjeT0iNTYuMDk4IiByPSI1Ni4wOTgiLz4KCTwvZz4KCTxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtmaWxsOiNGRkZGRkY7IiBkPSJNNTMuOTc5LDgwLjcwMmg0LjQwM2MwLDAsMS4zMy0wLjE0NiwyLjAwOS0wLjg3OCAgIGMwLjYyNS0wLjY3MiwwLjYwNS0xLjkzNCwwLjYwNS0xLjkzNHMtMC4wODYtNS45MDgsMi42NTYtNi43NzhjMi43MDMtMC44NTcsNi4xNzQsNS43MSw5Ljg1Myw4LjIzNSAgIGMyLjc4MiwxLjkxMSw0Ljg5NiwxLjQ5Miw0Ljg5NiwxLjQ5Mmw5LjgzNy0wLjEzN2MwLDAsNS4xNDYtMC4zMTcsMi43MDYtNC4zNjNjLTAuMi0wLjMzMS0xLjQyMS0yLjk5My03LjMxNC04LjQ2MyAgIGMtNi4xNjgtNS43MjUtNS4zNDItNC43OTksMi4wODgtMTQuNzAyYzQuNTI1LTYuMDMxLDYuMzM0LTkuNzEzLDUuNzY5LTExLjI5Yy0wLjUzOS0xLjUwMi0zLjg2Ny0xLjEwNS0zLjg2Ny0xLjEwNWwtMTEuMDc2LDAuMDY5ICAgYzAsMC0wLjgyMS0wLjExMi0xLjQzLDAuMjUyYy0wLjU5NSwwLjM1Ny0wLjk3OCwxLjE4OS0wLjk3OCwxLjE4OXMtMS43NTMsNC42NjctNC4wOTEsOC42MzZjLTQuOTMyLDguMzc1LTYuOTA0LDguODE3LTcuNzEsOC4yOTcgICBjLTEuODc1LTEuMjEyLTEuNDA3LTQuODY5LTEuNDA3LTcuNDY3YzAtOC4xMTYsMS4yMzEtMTEuNS0yLjM5Ny0xMi4zNzZjLTEuMjA0LTAuMjkxLTIuMDktMC40ODMtNS4xNjktMC41MTQgICBjLTMuOTUyLTAuMDQxLTcuMjk3LDAuMDEyLTkuMTkxLDAuOTRjLTEuMjYsMC42MTctMi4yMzIsMS45OTItMS42NCwyLjA3MWMwLjczMiwwLjA5OCwyLjM5LDAuNDQ3LDMuMjY5LDEuNjQ0ICAgYzEuMTM1LDEuNTQ0LDEuMDk1LDUuMDEyLDEuMDk1LDUuMDEyczAuNjUyLDkuNTU0LTEuNTIzLDEwLjc0MWMtMS40OTMsMC44MTQtMy41NDEtMC44NDgtNy45MzgtOC40NDYgICBjLTIuMjUzLTMuODkyLTMuOTU0LTguMTk0LTMuOTU0LTguMTk0cy0wLjMyOC0wLjgwNC0wLjkxMy0xLjIzNGMtMC43MS0wLjUyMS0xLjcwMi0wLjY4Ny0xLjcwMi0wLjY4N2wtMTAuNTI1LDAuMDY5ICAgYzAsMC0xLjU4LDAuMDQ0LTIuMTYsMC43MzFjLTAuNTE2LDAuNjExLTAuMDQxLDEuODc1LTAuMDQxLDEuODc1czguMjQsMTkuMjc4LDE3LjU3LDI4Ljk5MyAgIEM0NC4yNjQsODEuMjg3LDUzLjk3OSw4MC43MDIsNTMuOTc5LDgwLjcwMkw1My45NzksODAuNzAyeiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=);
+}
+
+.subscribe__icon--instagram {
+    background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeD0iMHB4IiB5PSIwcHgiIHZpZXdCb3g9IjAgMCAyOTEuMzE5IDI5MS4zMTkiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI5MS4zMTkgMjkxLjMxOTsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCI+CjxnPgoJPHBhdGggc3R5bGU9ImZpbGw6IzNGNzI5QjsiIGQ9Ik0xNDUuNjU5LDBjODAuNDQsMCwxNDUuNjYsNjUuMjE5LDE0NS42NiwxNDUuNjZTMjI2LjEsMjkxLjMxOSwxNDUuNjYsMjkxLjMxOVMwLDIyNi4xLDAsMTQ1LjY2ICAgUzY1LjIxLDAsMTQ1LjY1OSwweiIvPgoJPHBhdGggc3R5bGU9ImZpbGw6I0ZGRkZGRjsiIGQ9Ik0xOTUuOTMsNjMuNzA4SDk1LjM4Yy0xNy40NywwLTMxLjY3MiwxNC4yMTEtMzEuNjcyLDMxLjY3MnYxMDAuNTYgICBjMCwxNy40NywxNC4yMTEsMzEuNjcyLDMxLjY3MiwzMS42NzJoMTAwLjU2YzE3LjQ3LDAsMzEuNjcyLTE0LjIxMSwzMS42NzItMzEuNjcyVjk1LjM4ICAgQzIyNy42MTEsNzcuOTE5LDIxMy40LDYzLjcwOCwxOTUuOTMsNjMuNzA4eiBNMjA1LjkwOCw4Mi4wMzRsMy41ODctMC4wMDl2MjcuMjAybC0yNy40MDIsMC4wOTFsLTAuMDkxLTI3LjIwMiAgIEMxODIuMDAyLDgyLjExNiwyMDUuOTA4LDgyLjAzNCwyMDUuOTA4LDgyLjAzNHogTTE0NS42NiwxMTguMjM5YzIyLjczMiwwLDI3LjQyLDIxLjMzOSwyNy40MiwyNy40MjkgICBjMCwxNS4xMDMtMTIuMzA4LDI3LjQxMS0yNy40MiwyNy40MTFjLTE1LjEyMSwwLTI3LjQyLTEyLjMwOC0yNy40Mi0yNy40MTFDMTE4LjIzLDEzOS41NzgsMTIyLjkyOCwxMTguMjM5LDE0NS42NiwxMTguMjM5eiAgICBNMjA5LjY1LDE5My45NTVjMCw4LjY1OC03LjAzNywxNS43MDQtMTUuNzEzLDE1LjcwNEg5Ny4wNzNjLTguNjY3LDAtMTUuNzEzLTcuMDM3LTE1LjcxMy0xNS43MDR2LTY2LjUzOWgyMi43NTkgICBjLTIuMTEyLDUuMTk4LTMuMzA1LDEyLjI5OS0zLjMwNSwxOC4yNTNjMCwyNC43MDgsMjAuMTAxLDQ0LjgxOCw0NC44MTgsNDQuODE4czQ0LjgwOC0yMC4xMSw0NC44MDgtNDQuODE4ICAgYzAtNS45NTQtMS4xOTMtMTMuMDU1LTMuMjk2LTE4LjI1M2gyMi40ODZ2NjYuNTM5TDIwOS42NSwxOTMuOTU1eiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=);
+}
+
 @media (max-width: 955px) {
     .subscribe__wrap {
         height: 80px;
@@ -136,35 +175,33 @@ a.subscribe__send:hover {
     .subscribe__wrap_btn {
         position: absolute;
         right: 30px;
-        top: 45px;
-    }
-}
-
-@media (max-width: 450px) {
-    .subscribe__email {
-        height: 25px;
+        top: 60%;
     }
 
     .subscribe__send {
-        height: 25px;
+        margin: 0 auto;
     }
 
+    .subscribe__header>svg {
+        width: 25px;
+    }
+}
+
+@media (max-width: 420px) {
     .subscribe__header {
-        font-size: 13px;
+        font-size: 12px;
+    }
+
+    .subscribe__wrap {
+        height: 100px;
     }
 
     .subscribe__wrap_btn {
         right: 15px;
     }
-}
-
-@media (max-width: 420px) {
-    .subscribe__wrap {
-        height: 100px;
-    }
 
     .subscribe__header {
-        line-height: 20px;
+        line-height: 50px;
     }
 
     .subscribe__email {
@@ -175,7 +212,8 @@ a.subscribe__send:hover {
 
     .subscribe__send {
         display: block;
-        margin: 5px auto;
-        height: 20px;
+        height: 35px;
+        line-height: 35px;
+        font-size: 12px;
     }
 }
