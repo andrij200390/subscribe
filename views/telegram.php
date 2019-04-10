@@ -36,7 +36,7 @@ Html::tag('div',
         'class' => 'subscribe__header subscribe__header--white'
     ]).
     Html::tag('div',
-        Html::a($widget->telegram['submitButtonText'], 'https://t.me/'.$widget->telegram['channelName'], [
+        Html::a($widget->telegram['submitButtonText'], $widget->telegram['channelName'], [
             'class' => 'subscribe__send',
             'target' => '_blank'
         ]),
