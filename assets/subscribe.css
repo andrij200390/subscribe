@@ -16,6 +16,11 @@
     background: #0088cc;
 }
 
+.subscribe__wrap--dark {
+    background: rgb(41, 48, 53);
+    border-top: 1px solid #fff;
+}
+
 .subscribe__header>svg {
     width: 36px;
     height: 36px;
@@ -39,6 +44,10 @@
 
 .subscribe__header--white {
     color: #fff;
+}
+
+.subscribe__header--black {
+    color: #000;
 }
 
 .subscribe__form {
@@ -108,6 +117,10 @@ a.subscribe__send:hover {
     opacity: 0.7;
 }
 
+.subscribe__wrap--dark .subscribe__close:after {
+    border-top: 20px solid #fff;
+}
+
 .subscribe__close:hover::after {
     opacity: 1;
 }
@@ -130,11 +143,11 @@ a.subscribe__send:hover {
     margin-right: 5px;
     display: block;
     float: left;
-    opacity: 0.7;
+    opacity: 1;
 }
 
 .subscribe__icon:hover {
-    opacity: 1;
+    opacity: 0.7;
     -webkit-transition: opacity .1s linear;
     -moz-transition: opacity .1s linear;
     -ms-transition: opacity .1s linear;
