@@ -7,13 +7,13 @@ function setSubscribeCookies() {
 //if click on close subscribe bar
 $(".subscribe__close").click(function() {
     setSubscribeCookies();
-    setTimeout(hideWidget, 1000);
+    setTimeout(hideWidget, 200);
 });
 
 
 //functions for displaying the form
 function showWidget() {
-    $(".subscribe__wrap").show(1500);
+    $(".subscribe__wrap").slideDown(700);
 }
 
 function getCookie(name) {
@@ -25,12 +25,12 @@ function getCookie(name) {
 if (getCookie('my_subscribe')) {
 
 } else {
-    setTimeout(showWidget, 1000);
+    setTimeout(showWidget, 2000);
 }
 
 
 function hideWidget() {
-    $(".subscribe__wrap").hide(1500);
+    $(".subscribe__wrap").hide();
 }
 
 jQuery(document).ready(function() {

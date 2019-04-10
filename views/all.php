@@ -26,7 +26,7 @@ foreach ($widget->mode as $service) {
 echo
 Html::tag('div',
     Html::tag('p', $widget->all['message'], [
-        'class' => 'subscribe__header subscribe__header--white'
+        'class' => 'subscribe__header subscribe__header--'.$widget->style['textcolor']
     ]).
     Html::tag('div',
         $services,
@@ -41,5 +41,5 @@ Html::tag('div',
         'class' => 'subscribe__wrap_btn'
     ]),
 [
-    'class' => 'subscribe__wrap subscribe__wrap--blue'
+    'class' => 'subscribe__wrap subscribe__wrap--'.$widget->style['background']
 ]);

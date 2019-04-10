@@ -67,6 +67,12 @@ class Subscribe extends Widget
      */
     public $cookie;
 
+    /**
+     * Subscription area bar style
+     * @var array
+     */
+    public $style;
+
 
     /**
      * @inheritdoc
@@ -78,6 +84,12 @@ class Subscribe extends Widget
         if (!$this->mode) {
             $this->mode = 'disabled';
         }
+
+        if (!$this->style) {
+            $this->style['background'] = 'dark';
+            $this->style['textcolor'] = 'white';
+        }
+
 
         /* Defaults for email mode */
         $this->email['message'] = $this->email['message'] ?? 'Subscribe to keep up with our latest news!';
